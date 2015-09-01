@@ -11,19 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150901205716) do
+ActiveRecord::Schema.define(version: 20150901214347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "accomodations", force: :cascade do |t|
-    t.float   "one_star_cost"
-    t.float   "two_star_cost"
-    t.float   "three_star_cost"
-    t.float   "four_star_cost"
-    t.float   "five_star_cost"
-    t.integer "city_id"
-  end
 
   create_table "airports", force: :cascade do |t|
     t.string  "airport_code"
@@ -32,11 +23,16 @@ ActiveRecord::Schema.define(version: 20150901205716) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "city_name"
-    t.float    "transportation_cost"
-    t.float    "food_cost"
+    t.float    "transportation_cost", default: 0.0
+    t.float    "food_cost",           default: 0.0
     t.datetime "last_updated"
     t.string   "country_name"
-    t.float    "daily_average_cost"
+    t.float    "daily_average_cost",  default: 0.0
+    t.float    "one_star_cost",       default: 0.0
+    t.float    "two_star_cost",       default: 0.0
+    t.float    "three_star_cost",     default: 0.0
+    t.float    "four_star_cost",      default: 0.0
+    t.float    "five_star_cost",      default: 0.0
   end
 
 end
