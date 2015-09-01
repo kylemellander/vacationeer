@@ -5,7 +5,7 @@ class City < ActiveRecord::Base
 
   def city_data
     @doc = Nokogiri::HTML(open("http://www.numbeo.com/hotel-prices/city_result.jsp?country=#{country_name.gsub(/ /, "+")}&city=#{city_name.gsub(/, /, "%2C+").gsub(/ /, "+")}&displayCurrency=USD"))
-    self.update({daily_average_cost: daily_average_cost_calc, food_cost: food_price_calc, one_star_cost: hotel_prices[0], two_star_cost: hotel_prices[1], three_star_cost: hotel_prices[2], four_star_cost: hotel_prices[3], five_star_cost: hotel_prices[4]})
+    self.update({daily_average_cost: daily_average_cost_calc, food_cost: food_price_calc, transportation_cost: transportation_cost_calc, one_star_cost: hotel_prices[0], two_star_cost: hotel_prices[1], three_star_cost: hotel_prices[2], four_star_cost: hotel_prices[3], five_star_cost: hotel_prices[4]})
   end
 
   def daily_average_cost_calc
@@ -36,6 +36,20 @@ class City < ActiveRecord::Base
       i += 1
     end
     food_price
+  end
+
+  def average_hotel_cost
+    sum = 0.00
+    i = 0
+    hotel_prices.each do |price|
+      sum += price.to_f
+      i+=1
+    end
+    sum / i
+  end
+
+  def transportation_cost_calc
+    (daily_average_cost_calc - food_price_calc - average_hotel_cost).round(2)
   end
 
 end
