@@ -1,20 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title></title>
-    <meta charset="utf-8">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/css/stylesheet.css" media="screen" title="no title" charset="utf-8">
-    <link href='https://fonts.googleapis.com/css?family=Signika|Archivo+Narrow' rel='stylesheet' type='text/css'>
-  </head>
-  <body>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/css/stylesheet.css" media="screen" title="no title" charset="utf-8">
+  <link href='https://fonts.googleapis.com/css?family=Signika|Archivo+Narrow' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+  <nav class="navbar navbar-inverse navbar-static-top">
+    <div class="navbar-header">
+
+    </div>
+    <a class="navbar-brand" href="/">Vacationeer</a>
+    <div class="navbar-collapse collapse">
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href type="text" data-toggle="modal" data-target="#myModal">Login</a></li>
+        <li><a class="signup" href type="button" data-toggle="modal" data-target="#myModal2">Signup</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+  <div class="container">
     <%= yield %>
-  </body>
+  </div>
+</body>
 </html>
