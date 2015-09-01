@@ -9,6 +9,5 @@ end
 
 post '/' do
   budget = params['budget'].to_f
-
   erb(:index)
 end
