@@ -1,0 +1,74 @@
+.navbar {
+  opacity: 0.7;
+  filter: alpha(opacity=40);
+}
+
+.navbar li {
+  text-decoration: none;
+  display: inline;
+  color: white;
+}
+
+.navbar-right {
+  color: white;
+}
+
+.nav.navbar-nav li a {
+  color: white;
+  margin-right: 20px;
+}
+
+.navbar-brand {
+  color: white;
+}
+
+#index {
+  text-shadow: 2px 2px black;
+}
+
+.index {
+  text-align: center;
+  top: 100px;
+}
+
+#index1{
+  font-family: 'Archivo Narrow', sans-serif;
+}
+
+#index2 {
+  font-family: 'Archivo Narrow', sans-serif;
+}
+
+body {
+  height: 100%;
+  background-image: url("/img/island3.jpg");
+  background-size: 100% auto;
+  -webkit-background-size: 100% auto;
+  -moz-background-size: 100% auto;
+  -o-background-size: 100% auto;
+}
+
+.welcome {
+  color: white;
+  margin-top: 23%;
+  margin-right: 8%;
+}
+
+.ryan-title {
+  text-align: center;
+}
+
+body {
+  background-color: white;
+}
+
+
+/****** MODAL ******/
+
+.modal-title {
+  color: black;
+}
+
+.modal-body {
+  color: black;
+}

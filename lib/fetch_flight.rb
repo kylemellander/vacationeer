@@ -3,12 +3,11 @@ require 'open-uri'
 
 class Array
   def parse_flights
-    doc = Nokogiri::HTML(open('https://www.google.com/flights/#search;f=PDX;t=HND,NRT;'))
+    doc = Nokogiri::HTML(open('http://www.numbeo.com/hotel-prices/city_result.jsp?country=Japan&city=Tokyo&displayCurrency=USD'))
     output = []
-    doc.css('div.I115RS-c-zb').each do |price|
+    doc.css('.priceValue').each do |price|
       output.push(price.content)
     end
     output
-    doc
   end
 end
