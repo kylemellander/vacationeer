@@ -2,7 +2,6 @@ require 'nokogiri'
 require 'open-uri'
 
 class City < ActiveRecord::Base
-  has_many(:airports)
 
   def city_data
     if self.last_updated < (Time.now - 1.day)

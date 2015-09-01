@@ -31,9 +31,7 @@ describe City do
   it 'will update the values in the city table if it has been more than one day since it has been updated' do
     portland = City.create({city_name: "Portland, OR", country_name: "United States", last_updated: Time.now - 5.day})
     portland.city_data
-    
-    portland.update
-    expect(portland.last_updated).to eq(Time.now)
+    expect(portland.last_updated).to be_within(1.second).of Time.now
   end
 
 end
