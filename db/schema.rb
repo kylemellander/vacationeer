@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150901214347) do
+ActiveRecord::Schema.define(version: 20150901224537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20150901214347) do
     t.string   "city_name"
     t.float    "transportation_cost", default: 0.0
     t.float    "food_cost",           default: 0.0
-    t.datetime "last_updated"
+    t.datetime "last_updated",        default: '2000-01-01 08:00:00'
     t.string   "country_name"
     t.float    "daily_average_cost",  default: 0.0
     t.float    "one_star_cost",       default: 0.0
