@@ -8,6 +8,7 @@ get "/"  do
 end
 
 get "/hotels" do
-  @hotel_prices = [].parse_hotel_prices
+  @hotel_prices = ["New York, NY", "United States"].parse_hotel_prices
+  @tourist_average_cost = ["New York, NY", "United States"].tourist_average_cost
   erb(:hotels)
 end
