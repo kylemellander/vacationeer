@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe City do
+  it { should validate_presence_of(:city_name) }
+
+  it { should validate_presence_of(:country_name) }
+
   it 'will fetch the daily average cost from numbeo' do
     portland = City.create({city_name: "Portland, OR", country_name: "United States"})
     portland.city_data
