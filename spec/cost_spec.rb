@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe City do
+  it { should validate_presence_of(:city_name) }
+
+  it { should validate_presence_of(:country_name) }
+
   it 'will fetch the daily average cost from numbeo' do
     portland = City.create({city_name: "Portland, OR", country_name: "United States"})
     portland.city_data
@@ -26,6 +30,12 @@ describe City do
     portland = City.create({city_name: "Portland, OR", country_name: "United States"})
     portland.city_data
     expect(portland.transportation_cost).to eq(77.48)
+  end
+
+  it 'will update the values in the city table if it has been more than one day since it has been updated' do
+    portland = City.create({city_name: "Portland, OR", country_name: "United States", last_updated: Time.now - 5.day})
+    portland.city_data
+    expect(portland.last_updated).to be_within(1.second).of Time.now
   end
 
 end
