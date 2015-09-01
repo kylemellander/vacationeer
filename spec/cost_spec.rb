@@ -22,4 +22,10 @@ describe City do
     expect(portland.four_star_cost).to eq(172.78)
   end
 
+  it 'will fetch the daily transportation cost from numbeo' do
+    portland = City.create({city_name: "Portland, OR", country_name: "United States"})
+    portland.city_data
+    expect(portland.transportation_cost).to eq(77.48)
+  end
+
 end
