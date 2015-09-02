@@ -17,8 +17,8 @@ get '/vacations' do
 end
 
 get '/admins' do
-  @cities = City.all()
-  @activities = Activity.all()
+  @cities = City.all().order(:city_name)
+  @activities = Activity.all.order(:name)
   erb(:admin)
 end
 

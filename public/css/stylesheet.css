@@ -4,6 +4,10 @@
   margin-bottom:0 !important;
 }
 
+.admin-page label {
+  color: #000000;
+}
+
 .navbar li {
   text-decoration: none;
   display: inline;
