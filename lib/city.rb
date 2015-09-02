@@ -1,5 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
+require 'pry'
+
 
 class City < ActiveRecord::Base
   has_many(:airports)
@@ -13,6 +15,14 @@ class City < ActiveRecord::Base
       self.update({daily_average_cost: daily_average_cost_calc, food_cost: food_price_calc, last_updated: Time.now, transportation_cost: transportation_cost_calc, one_star_cost: hotel_prices[0], two_star_cost: hotel_prices[1], three_star_cost: hotel_prices[2], four_star_cost: hotel_prices[3], five_star_cost: hotel_prices[4]})
     end
   end
+
+  def flight_cost
+    @doc = Nokogiri::HTML(open("http://www.faredetective.com/farehistory/flights-from-Portland-PDX-to-Philadelphia-PHL.html"))
+    @doc.css('.div7').each do |flight_info|
+      price_test = flight_info.text.split("Average price: ")[1].split("Cheapest months to travel: ")[0].to_i
+    end
+  end
+
 
 private
 
