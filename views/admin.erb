@@ -1,61 +1,44 @@
 <div class="container main-inner-container admin-page">
 
-  <h3>Add New City</h3>
+  <h3>Available Cities</h3>
 
-  <div class="row">
-    <div class="col-md-3">
-      <form action="/admins/new_city" method="post">
-        <div class="form-group">
-          <label for="city_name">City Name</label>
-          <input type="text" class="form-control" name="city_name" placeholder="ex. Portland, OR">
-        </div>
-        <div class="form-group">
-          <label for="country_name">Country Name</label>
-          <input type="text" class="form-control" name="country_name" placeholder="ex. United States">
-        </div>
-        <button type="submit" class="btn">Add</button>
-      </form>
-    </div>
-
-    <div class="col-md-9">
-      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <% i = 1 %>
-        <% @cities.each do |city| %>
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="heading<%= i %>">
-            <h4 class="panel-title">
-              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= i %>" aria-expanded="true" aria-controls="collapsev">
-                <%= city.city_name %>, <%= city.country_name %>
-              </a>
-            </h4>
-          </div>
-          <div id="collapse<%= i %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= i %>">
-            <div class="panel-body">
-              <form action="/cities/<%= city.id %>" method="post">
-                <input type="hidden" name="_method" value="patch">
-                <div class="form-group">
-                  <label for="city_name">City Name</label>
-                  <input type="text" class="form-control" name="city_name" value="<%= city.city_name %>" placeholder="ex. Portland, OR">
-                </div>
-                <div class="form-group">
-                  <label for="country_name">Country Name</label>
-                  <input type="text" class="form-control" name="country_name" value="<%= city.country_name %>" placeholder="ex. United States">
-                </div>
-                <button type="submit" class="btn">Update</button>
-              </form>
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <% i = 1 %>
+    <% @cities.each do |city| %>
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="heading<%= i %>">
+        <h4 class="panel-title">
+          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= i %>" aria-expanded="true" aria-controls="collapsev">
+            <%= city.city_name %>, <%= city.country_name %>
+          </a>
+        </h4>
+      </div>
+      <div id="collapse<%= i %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= i %>">
+        <div class="panel-body">
+          <form action="/cities/<%= city.id %>" method="post">
+            <input type="hidden" name="_method" value="patch">
+            <div class="form-group">
+              <label for="city_name">City Name</label>
+              <input type="text" class="form-control" name="city_name" value="<%= city.city_name %>" placeholder="ex. Portland, OR">
             </div>
-          </div>
+            <div class="form-group">
+              <label for="country_name">Country Name</label>
+              <input type="text" class="form-control" name="country_name" value="<%= city.country_name %>" placeholder="ex. United States">
+            </div>
+            <button type="submit" class="btn">Update</button>
+          </form>
         </div>
-        <% i+=1 %>
-        <% end %>
       </div>
     </div>
+    <% i+=1 %>
+    <% end %>
   </div>
-
-  <h3>Add New Activity</h3>
 
   <div class="row">
     <div class="col-md-3">
+
+      <h3>Add New Activity</h3>
+
       <form action="/admins/new_activity" method="post">
         <div class="form-group">
           <label for="name">Activity Name</label>
@@ -70,13 +53,16 @@
     </div>
 
     <div class="col-md-9">
+
+      <h3>Available Activities</h3>
+
       <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
         <% @activities.each do |activity| %>
         <div class="panel panel-default">
           <div class="panel-heading" role="tab" id="heading<%= i %>">
             <h4 class="panel-title">
               <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= i %>" aria-expanded="true" aria-controls="collapsev">
-                <%= activity.name %>, <%= activity.group %>
+                <%= activity.group %>, <%= activity.name %>
               </a>
             </h4>
           </div>

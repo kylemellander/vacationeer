@@ -18,7 +18,7 @@ end
 
 get '/admins' do
   @cities = City.all().order(:city_name)
-  @activities = Activity.all.order(:name)
+  @activities = Activity.all.order(:group)
   erb(:admin)
 end
 
