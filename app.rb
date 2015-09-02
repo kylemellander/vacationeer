@@ -1,6 +1,6 @@
 require("bundler/setup")
 Bundler.require(:default)
-
+require 'pry'
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 get '/' do
@@ -43,8 +43,12 @@ patch '/cities/:id' do
   city_name = params['city_name']
   country = params['country_name']
   airport_code = params['airport_code'].upcase
+  activity_ids = params['activity_ids']
+  activity_inputs = []
+  activity_ids.each {|id| activity_inputs.push(id.to_i)}
   city = City.find(id)
-  city.update({city_name: city_name, country_name:country})
+  city.update({city_name: city_name, country_name: country, activity_ids: activity_inputs})
+  city.airports.first.update({airport_code: airport_code})
   redirect '/admins'
 end
 

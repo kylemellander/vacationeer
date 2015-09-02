@@ -44,6 +44,18 @@
                   <label for="country_name">Country Name</label>
                   <input type="text" class="form-control" name="country_name" value="<%= city.country_name %>" placeholder="ex. United States">
                 </div>
+                <div class="form-group">
+                  <label for="airport_code">Airport Code</label>
+                  <input type="text" class="form-control" name="airport_code" placeholder="ex. PDX" value="<%= city.airports.first.airport_code %>">
+                </div>
+                <% Activity.all.each do |activity| %>
+                <div class="checkbox col-sm-4">
+                  <label>
+                    <input type="checkbox" value="<%= activity.id %>" name="activity_ids[]"<% if city.activities.include?(activity) %> checked<% end %>>
+                    <%= activity.name %>
+                  </label>
+                </div>
+                <% end %>
                 <button type="submit" class="btn">Update</button>
               </form>
             </div>
