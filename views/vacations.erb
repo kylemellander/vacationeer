@@ -1,7 +1,7 @@
 <div class="container">
   <ul class="list-group">
   <% @cities.each do |city| %>
-    <li class="list-group-item"><%= city.city_name %>, <%= city.country_name %> - $<%= city.daily_average_cost %></li>
+    <li class="list-group-item"><%= city.city_name %>, <%= city.country_name %> - $<%= '%.2f' % city.daily_average_cost %></li>
   <% end %>
   </ul>
 </div>

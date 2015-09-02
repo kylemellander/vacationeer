@@ -7,7 +7,7 @@ get '/' do
   erb(:index)
 end
 
-post '/' do
+get '/vacations' do
   budget = params['budget'].to_f
   city_name = params['city_name']
   vacation_length = params['vacation_length']
@@ -33,5 +33,21 @@ post '/admins/new_activity' do
   name = params["name"]
   group = params["group"]
   Activity.create({name: name, group: group})
+  redirect '/admins'
+end
+
+patch '/cities/:id' do
+  id = params['id'].to_i
+  city = params['city_name']
+  country = params['country_name']
+  City.find(id).update({city_name: city, country_name:country})
+  redirect '/admins'
+end
+
+patch '/activities/:id' do
+  id = params["id"].to_i
+  name = params["name"]
+  group = params["group"]
+  Activity.find(id).update({name: name, group: group})
   redirect '/admins'
 end

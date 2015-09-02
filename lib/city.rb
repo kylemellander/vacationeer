@@ -19,7 +19,7 @@ private
   def daily_average_cost_calc
     @doc.css('.innerWidth').children.each do |p|
       if p.text.include?("Business or regular tourist estimated")
-        return p.text.split.last.gsub(/\u00A0\$/, "").to_f
+        return p.text.split.last.gsub(/\u00A0\$/, "").to_f.round(2)
       end
     end
   end
