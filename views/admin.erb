@@ -28,7 +28,7 @@
           <div class="panel-heading" role="tab" id="heading<%= i %>">
             <h4 class="panel-title">
               <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= i %>" aria-expanded="true" aria-controls="collapsev">
-                <%= city.city_name %>, <%= city.country_name %>
+                <%= city.airports.first.airport_code %> - <%= city.city_name %>, <%= city.country_name %>
               </a>
             </h4>
           </div>
