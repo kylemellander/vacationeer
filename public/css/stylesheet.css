@@ -1,7 +1,11 @@
 .navbar {
   opacity: 0.7;
   filter: alpha(opacity=40);
-  margin-bottom:0;
+  margin-bottom:0 !important;
+}
+
+.admin-page label {
+  color: #000000;
 }
 
 .navbar li {
@@ -14,9 +18,13 @@
   color: white;
 }
 
+.navbar-collapse ul {
+  margin-right: 0px;
+}
+
 .nav.navbar-nav li a {
   color: white;
-  margin-right: 20px;
+  /*margin-right: 20px;*/
 }
 
 .navbar-brand {
@@ -61,6 +69,8 @@ body {
 
 body {
   background-color: white;
+  background:url('/img/boat_bg.jpg') no-repeat center center fixed;
+  background-size:cover;
 }
 
 
@@ -77,12 +87,12 @@ body {
 /****** THEME ******/
 .main-container {
   margin-top:0;
-  background:url('/img/boat_bg.jpg') no-repeat center center fixed;
-  background-size:cover;
 }
 .main-inner-container {
   background:url('/img/logo-screen.png') no-repeat top center;
   min-height:400px;
+  margin-top:0;
+  padding-bottom: 40px;
 }
 .logo {
   text-align:center;
@@ -94,10 +104,19 @@ body {
   padding:0px auto;
   font-family: 'Raleway', sans-serif;
   font-size:2.5em;
+  margin-top:40px;
 }
+label {
+  color:#fff;
+}
+
 .subtitle h2 {
   font-family: 'Courgette', cursive;
   font-size:2.5em;
   text-align:center;
   color:#fff;
+}
+
+.admin-page {
+  background:#fff;
 }

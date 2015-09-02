@@ -3,7 +3,9 @@ require 'open-uri'
 
 class City < ActiveRecord::Base
   has_many(:airports)
+  has_and_belongs_to_many(:activities)
   validates(:city_name, :country_name, presence: true)
+  before_save(:city_data)
 
   def city_data
     if self.last_updated < (Time.now - 1.day)
@@ -17,7 +19,7 @@ private
   def daily_average_cost_calc
     @doc.css('.innerWidth').children.each do |p|
       if p.text.include?("Business or regular tourist estimated")
-        return p.text.split.last.gsub(/\u00A0\$/, "").to_f
+        return p.text.split.last.gsub(/\u00A0\$/, "").to_f.round(2)
       end
     end
   end
