@@ -15,3 +15,23 @@ post '/' do
   @cities = input.list_vacations
   erb(:vacations)
 end
+
+get '/admins' do
+  @cities = City.all()
+  @activities = Activity.all()
+  erb(:admin)
+end
+
+post '/admins/new_city' do
+  city_name = params["city_name"]
+  country_name = params["country_name"]
+  City.create({city_name: city_name, country_name: country_name})
+  redirect '/admins'
+end
+
+post '/admins/new_activity' do
+  name = params["name"]
+  group = params["group"]
+  Activity.create({name: name, group: group})
+  redirect '/admins'
+end

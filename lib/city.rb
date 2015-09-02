@@ -3,7 +3,9 @@ require 'open-uri'
 
 class City < ActiveRecord::Base
   has_many(:airports)
+  has_and_belongs_to_many(:activities)
   validates(:city_name, :country_name, presence: true)
+  before_save(:city_data)
 
   def city_data
     if self.last_updated < (Time.now - 1.day)

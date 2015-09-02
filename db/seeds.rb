@@ -1,7 +1,25 @@
 require("bundler/setup")
 Bundler.require(:default)
 
-lame = Dir[File.expand_path('../.') + '/vacationeer/lib/*.rb'].each { |file| require file }
+Dir[File.expand_path('../.') + '/vacationeer/lib/*.rb'].each { |file| require file }
+
+activity1 = Activity.create({name: "Night Life", group: "Social"})
+activity2 = Activity.create({name: "Hiking", group: "Outdoors"})
+activity3 = Activity.create({name: "Beach", group: "Location"})
+activity4 = Activity.create({name: "Urban", group: "Location"})
+activity5 = Activity.create({name: "Historical Landmarks", group: "Tourist"})
+activity6 = Activity.create({name: "Museums", group: "Arts"})
+activity7 = Activity.create({name: "Beach", group: "Location"})
+activity8 = Activity.create({name: "Local Culture", group: "Social"})
+activity1 = Activity.create({name: "Family Friendly", group: "Life"})
+activity2 = Activity.create({name: "Romantic", group: "Life"})
+activity3 = Activity.create({name: "Peace and Quiet", group: "Life"})
+activity4 = Activity.create({name: "Mountains", group: "Location"})
+activity5 = Activity.create({name: "Island", group: "Location"})
+activity6 = Activity.create({name: "Theater/Musicals", group: "Arts"})
+activity7 = Activity.create({name: "Concerts", group: "Arts"})
+activity8 = Activity.create({name: "Golf", group: "Outdoors"})
+
 
 
 city = City.create({:city_name => 'Seattle, WA', :country_name => 'United States'})

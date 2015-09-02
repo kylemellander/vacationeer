@@ -1,0 +1,56 @@
+<div class="container main-inner-container admin-page">
+
+  <h3>Add New City</h3>
+
+  <div class="row">
+    <div class="col-md-6">
+      <form action="/admins/new_city" method="post">
+        <div class="form-group">
+          <label for="city_name">City Name</label>
+          <input type="text" class="form-control" name="city_name" placeholder="ex. Portland, OR">
+        </div>
+        <div class="form-group">
+          <label for="country_name">Country Name</label>
+          <input type="text" class="form-control" name="country_name" placeholder="ex. United States">
+        </div>
+        <button type="submit" class="btn">Add</button>
+      </form>
+    </div>
+
+
+    <div class="col-md-6">
+      <ul>
+        <% @cities.each do |city| %>
+          <li><%= city.city_name %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Add New Activity</h3>
+
+  <div class="row">
+    <div class="col-md-6">
+      <form action="/admins/new_activity" method="post">
+        <div class="form-group">
+          <label for="name">Activity Name</label>
+          <input type="text" class="form-control" name="name" placeholder="ex. Hiking">
+        </div>
+        <div class="form-group">
+          <label for="group">Activity Group</label>
+          <input type="text" class="form-control" name="group" placeholder="ex. Outdoors">
+        </div>
+        <button type="submit" class="btn">Add</button>
+      </form>
+    </div>
+
+    <div class="col-md-6">
+      <ul>
+        <% @activities.each do |activity| %>
+        <li><%= activity.name %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+</div>
