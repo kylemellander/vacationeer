@@ -18,14 +18,16 @@ end
 
 get '/admins' do
   @cities = City.all().order(:city_name)
-  @activities = Activity.all.order(:name)
+  @activities = Activity.all.order(:group)
   erb(:admin)
 end
 
 post '/admins/new_city' do
   city_name = params["city_name"]
   country_name = params["country_name"]
-  City.create({city_name: city_name, country_name: country_name})
+  airport_code = params['airport_code'].upcase
+  city = City.create({city_name: city_name, country_name: country_name})
+  Airport.create({airport_code: airport_code, city_id: city.id})
   redirect '/admins'
 end
 
@@ -38,9 +40,11 @@ end
 
 patch '/cities/:id' do
   id = params['id'].to_i
-  city = params['city_name']
+  city_name = params['city_name']
   country = params['country_name']
-  City.find(id).update({city_name: city, country_name:country})
+  airport_code = params['airport_code'].upcase
+  city = City.find(id)
+  city.update({city_name: city_name, country_name:country})
   redirect '/admins'
 end
 
