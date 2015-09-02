@@ -1,0 +1,19 @@
+{
+  "request": {
+    "passengers": {
+      "adultCount": 1
+    },
+    "slice": [
+      {
+        "origin": "PDX",
+        "destination": "SEA",
+        "date": "2015-09-25"
+      },
+      {
+        "origin": "SEA",
+        "destination": "PDX",
+        "date": "2015-10-10"
+      }
+    ]
+  }
+}
