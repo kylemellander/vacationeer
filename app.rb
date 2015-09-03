@@ -59,3 +59,8 @@ patch '/activities/:id' do
   Activity.find(id).update({name: name, group: group})
   redirect '/admins'
 end
+
+get '/test/:name' do
+  @data = params['name']
+  erb(:test)
+end
