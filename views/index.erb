@@ -9,27 +9,36 @@
     </div>
   </div>
   <form action="/vacations" method="get">
+    <% if @input %>
+    <div class="alert alert-danger">
+      <% if @budget == 0 %><p>Budget is required</p><% end %>
+      <% if @airport_code = "" %><p>Airport Code is required</p><% end %>
+      <% if @city_name == "" %><p>Flying out of is required</p><% end %>
+      <% if @vacation_length == 0 %><p>Vacation Length is required</p><% end %>
+      <% if @activity_ids == nil %><p>At least one activity is required</p><% end %>
+    </div>
+    <% end %>
     <div class="row">
       <div class="col-sm-6">
         <div class="form-group">
           <label for="city_name">Flying out of:</label>
-          <input type="text" class="form-control" name="city_name" placeholder="ex. Portland, OR">
+          <input type="text" class="form-control" name="city_name" placeholder="ex. Portland, OR"<% if @city_name %> value="<%= @city_name %>"<% end %>>
         </div>
         <div class="form-group">
           <label for="airport_code">Airport Code <a href type="text" data-toggle="modal" data-target="#myModal3">(Find my airport code)</a></label>
-          <input type="text" name="airport_code" class="form-control" placeholder="ex. PDX">
+          <input type="text" name="airport_code" class="form-control" placeholder="ex. PDX"<% if @airport_code %> value="<%= @airport_code %>"<% end %>>
         </div>
         <div class="form-group">
           <label for="vacation_length">How long do you want to stay?</label>
           <div class="input-group">
-            <input type="text" class="form-control" name="vacation_length" placeholder="10">
+            <input type="text" class="form-control" name="vacation_length" placeholder="10"<% if @vacation_length > 0 %> value="<%=@vacation_length %>"<% end %>>
             <div class="input-group-addon">days</div>
           </div>
         </div>
         <label for="budget">Budget</label>
         <div class="input-group">
           <div class="input-group-addon">$</div>
-          <input type="number" class="form-control" min="0" name="budget" placeholder="2,500.00">
+          <input type="number" class="form-control" min="0" name="budget" placeholder="2,500.00"<% if @budget > 0.0 %> value="<%=@budget %>"<% end %>>
         </div>
       </div>
       <div class="col-sm-6">
@@ -38,7 +47,7 @@
             <% Activity.all.each do |activity| %>
             <div class="checkbox col-sm-4">
               <label>
-                <input type="checkbox" value="<%= activity.id %>" name="activity_ids[]">
+                <input type="checkbox" value="<%= activity.id %>" name="activity_ids[]"<% if @activity_ids != nil && @activity_ids.include?("activity.id")%> checked<%end%>>
                 <%= activity.name %>
               </label>
             </div>

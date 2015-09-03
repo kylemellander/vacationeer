@@ -30,6 +30,9 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (0.7.0)
     json (1.8.3)
+    lotus-utils (0.5.1)
+    lotus-validations (0.3.2)
+      lotus-utils (~> 0.4)
     method_source (0.8.2)
     mime-types (2.6.1)
     mini_portile (0.6.2)
@@ -93,6 +96,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   httparty
+  lotus-validations
   nokogiri
   pg
   pry

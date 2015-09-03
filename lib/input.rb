@@ -1,6 +1,13 @@
-class Input
+require 'lotus/validations'
 
-  validates :budget, :city_name, :vacation_length, :airport_code, :activity_ids, presence: true
+class Input
+  include Lotus::Validations
+
+  validates :budget, presence: true
+  validates :city_name, presence: true
+  validates :vacation_length, presence: true
+  validates :airport_code, presence: true
+  validates :activity_ids, presence: true
   attr_accessor :budget, :city_name, :vacation_length, :airport_code, :activity_ids
 
   def initialize(attributes)
