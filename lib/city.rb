@@ -17,21 +17,6 @@ class City < ActiveRecord::Base
     end
   end
 
-  def flight_cost
-    # if self.last_updated < (Time.now - 1.day)
-    total_flight_cost = 0
-    City.all.each do |city|
-      binding.pry
-      doc = Nokogiri::HTML(open("http://www.faredetective.com/farehistory/flights-from-Portland-PDX-to-#{city.city_name.split(",").first}-#{city.airports.first.airport_code}.html"))
-      doc.css('.div7').each do |flight_info|
-        total_flight_cost = flight_info.text.split("Average price: ")[1].split("Cheapest months to travel: ")[0].to_i
-      end
-      Origin.create({:name => "PDX", :cost => total_flight_cost, :city_id => city.id})
-    end
-    # end
-  end
-
-
 private
 
   def city_name_only

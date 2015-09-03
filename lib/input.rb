@@ -22,6 +22,27 @@ class Input
     vacations
   end
 
+  def fetch_flight_cost
+    total_flight_cost = 0
+    City.all.each do |city|
+      origin = Origin.where(city_id: city.id).find_by(name: airport_code)
+      if origin == nil
+        href = "http://www.faredetective.com/farehistory/flights-from-#{city_name_only.first.gsub(/ /, "_")}-#{airport_code}-to-#{city.city_name.split(",").first.gsub(/ /, "_")}-#{city.airports.first.airport_code}.html"
+        doc = Nokogiri::HTML(open(href))
+        doc.css('.div7').each do |flight_info|
+          total_flight_cost = flight_info.text.split("Average price: ")[1].split("Cheapest months to travel: ")[0].to_i
+        end
+        Origin.create({name: airport_code, :cost => total_flight_cost, :city_id => city.id})
+      elsif origin.updated_at < (Time.now - 1.day)
+        doc = Nokogiri::HTML(open("http://www.faredetective.com/farehistory/flights-from-#{city_name_only}-#{airport_code}-to-#{city.city_name.split(",").first}-#{city.airports.first.airport_code}.html"))
+        doc.css('.div7').each do |flight_info|
+          total_flight_cost = flight_info.text.split("Average price: ")[1].split("Cheapest months to travel: ")[0].to_i
+        end
+        origin.update({cost: total_flight_cost})
+      end
+    end
+  end
+
   def city_name_only
     city_name.split(",").first
   end
