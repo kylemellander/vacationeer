@@ -146,4 +146,18 @@ label {
 .modal-header p {
   font-family: 'Courgette', cursive;
   font-size: 9px;
+  font-family: 'Archivo Narrow', sans-serif;
 }
+
+.modal-header h2 {
+  color:white;
+  position: center;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-content h3 {
+  padding: 0 10% 0 5%;
+  font-family: 'Raleway', sans-serif;}
