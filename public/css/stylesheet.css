@@ -134,3 +134,12 @@ label {
 @media (max-width:680px) {
   .box { width:96%;}
 }
+
+.modal-header p {
+  font-family: 'Courgette', cursive;
+  font-size: 9px;
+}
+
+ {
+  opacity: 0.1;
+}

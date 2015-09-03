@@ -11,9 +11,10 @@ class Input
 
   def list_vacations
     vacations = []
-    City.all().each do |city|
+    City.all().order('daily_average_cost asc').each do |city|
       city.city_data
-      cost = city.daily_average_cost * vacation_length
+      cost = (city.daily_average_cost * vacation_length)
+      # + city.origins.first.cost
       if cost <= budget
         vacations.push(city)
       end
