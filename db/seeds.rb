@@ -31,7 +31,7 @@ Airport.create({:airport_code => "NRT", :city_id => city.id})
 city = City.create({:city_name => 'Las Vegas, NV', :country_name => 'United States'})
 Airport.create({:airport_code => "LAS", :city_id => city.id})
 
-city = City.create({:city_name => 'Berlin', :country_name => 'Germany'})
+city = City.create({:city_name => 'Berlin', :country_name => 'Germany', img: "http://media-1.web.britannica.com/eb-media/01/20101-004-4D6DDC93.jpg"})
 Airport.create({:airport_code => "SXF", :city_id => city.id})
 
 city = City.create({:city_name => 'Paris', :country_name => 'France'})
