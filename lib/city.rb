@@ -5,6 +5,7 @@ require 'pry'
 
 class City < ActiveRecord::Base
   has_many(:airports)
+  has_many(:origins)
   has_and_belongs_to_many(:activities)
   validates(:city_name, :country_name, presence: true)
   before_save(:city_data)
@@ -18,10 +19,15 @@ class City < ActiveRecord::Base
 
   def flight_cost
     # if self.last_updated < (Time.now - 1.day)
-      doc = Nokogiri::HTML(open("http://www.faredetective.com/farehistory/flights-from-Portland-PDX-to-Philadelphia-PHL.html"))
+    total_flight_cost = 0
+    City.all.each do |city|
+      binding.pry
+      doc = Nokogiri::HTML(open("http://www.faredetective.com/farehistory/flights-from-Portland-PDX-to-#{city.city_name.split(",").first}-#{city.airports.first.airport_code}.html"))
       doc.css('.div7').each do |flight_info|
-        price_test = flight_info.text.split("Average price: ")[1].split("Cheapest months to travel: ")[0].to_i
+        total_flight_cost = flight_info.text.split("Average price: ")[1].split("Cheapest months to travel: ")[0].to_i
       end
+      Origin.create({:name => "PDX", :cost => total_flight_cost, :city_id => city.id})
+    end
     # end
   end
 

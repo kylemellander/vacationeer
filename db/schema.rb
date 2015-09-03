@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20150903172711) do
     t.integer  "cost"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "city_id"
   end
 
 end
