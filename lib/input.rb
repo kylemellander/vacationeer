@@ -1,3 +1,5 @@
+require 'pry'
+
 class Input
 
   attr_accessor :budget, :city_name, :vacation_length, :airport_code, :activity_ids
@@ -29,9 +31,10 @@ class Input
         vacations.push({count: count, city: city})
       end
     end
-    vacations.sort_by! { |hash| hash[:count]}
+
+    vacations.sort_by! { |hsh| hsh[:count] }
     result = []
-    vacations.each { |vacation| result.push(vacation.values.last)}
+    vacations.each { |vacation| result.push(vacation.values.last) }
     result.reverse
   end
 
