@@ -6,14 +6,13 @@
       <% @cities.each do |city| %>
       <% city_name = city.city_name.split(" ").first %>
       <% city_name = city_name.split(",").first if city_name.include?(",") %>
-      <div class="box masonry-brick"><img src="<%=city.img %>" class="img-responsive"><a href type="text" data-toggle="modal" data-target="#modal<%= city_name %>"><%= city.city_name %>, <%= city.country_name %></a><br>Daily Average Cost: $<%= '%.2f' % city.daily_average_cost %></div>
+      <div class="box masonry-brick"><img src="<%=city.img %>" class="img-responsive"><a href type="text" data-toggle="modal" data-target="#modal<%= city_name %>"><%= city.city_name %>, <%= city.country_name %></a><br>Daily Average Cost: $<%= '%.2f' % city.daily_average_cost %><br>Roundtrip flight cost: $<%= city.origins.first.cost * 2%></div>
 
       <div class="modal fade" id="modal<%= city_name %>" role="dialog">
         <div class="modal-dialog">
           <div class="modal-header">
             <h2><%= city.city_name %></h2>
             <div class="modal-content">
-              <h3>Estimated flight cost: THIS</h3>
               <h3>Estimated daily transportation cost: $<%= city.transportation_cost %></h3>
               <h3>Estimated daily food cost: $<%= city.food_cost %></h3>
               <h3>Estimated daily hotel cost: $<%= city.four_star_cost %></h3>
