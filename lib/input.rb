@@ -1,6 +1,4 @@
-require 'pry'
-
-class Input
+class Input < ActiveRecord::Base
 
   attr_accessor :budget, :city_name, :vacation_length, :airport_code, :activity_ids
 
