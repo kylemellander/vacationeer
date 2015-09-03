@@ -127,10 +127,18 @@ label {
   background:#fff;
 }
 .box {
-  width: 31.3%;
-  margin: 1%;
+  width: 347.020px;
+  margin: 15px;
   float: left;
+  background:#efefef;
+  box-shadow: 2px 2px 5px #ccc;
+  padding:1%;
+  border-radius:4px;
 }
+.box:hover{
+  border:1px solid #25a8ad;
+}
+
 @media (max-width:680px) {
   .box { width:96%;}
 }
@@ -138,8 +146,4 @@ label {
 .modal-header p {
   font-family: 'Courgette', cursive;
   font-size: 9px;
-}
-
- {
-  opacity: 0.1;
 }
