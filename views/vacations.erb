@@ -15,7 +15,7 @@
         <% i+=1 %>
         <a href type="text" data-toggle="modal" data-target="#modal<%= city_name %>"><%= city.city_name %>, <%= city.country_name %></a>
         <br>Daily Average Cost: $<%= '%.2f' % city.daily_average_cost %>
-        <br>Roundtrip flight cost: $<%= city.origins.first.cost * 2%>
+        <br>Roundtrip flight cost: $<%= city.origins.first.cost %>
       </div>
       <div class="modal fade" id="modal<%= city_name %>" role="dialog">
         <div class="modal-dialog">
