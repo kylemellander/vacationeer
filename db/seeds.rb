@@ -23,6 +23,11 @@ activity8 = Activity.create({name: "Golf", group: "Outdoors"})
 
 
 city = City.create({:city_name => 'Seattle, WA', :country_name => 'United States', img: "/img/seattle.jpg"})
+city.activities.push(activity1)
+city.activities.push(activity4)
+city.activities.push(activity5)
+city.activities.push(activity7)
+city.activities.push(activity8)
 Airport.create({:airport_code => "SEA", :city_id => city.id})
 
 city = City.create({:city_name => 'Tokyo', :country_name => 'Japan', img: "/img/tokyo.png"})
