@@ -10,7 +10,7 @@
           <img src="<%=city.img %>" class="img-responsive">
           <% if i==0 %><div class="ribbon-wrapper-blue"><div class="ribbon-blue">Best Option</div></div><% end %>
         <% if i==0 %></div><% end %>
-        <a href type="text" data-toggle="modal" data-target="#modal<%= city.city_name %>"><%= city.city_name %>, <%= city.country_name %></a><br>
+        <a href type="text" data-toggle="modal" data-target="#modal<%= city.city_name.split(",").first.gsub(/ /, "_") %>"><%= city.city_name %>, <%= city.country_name %></a><br>
         Daily Average Cost: $<%= '%.2f' % city.daily_average_cost %>
       </div>
       <% i+=1 %>
@@ -21,7 +21,7 @@
 
 
 <% @cities.each do |city| %>
-<div class="modal fade" id="modal<%= city.city_name %>" role="dialog">
+<div class="modal fade" id="modal<%= city.city_name.split(",").first.gsub(/ /, "_") %>" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
     <h2><%= city.city_name %></h2>

@@ -181,12 +181,12 @@ label {
   left: -5px;
   top: 15px;
   width: 120px;
-  background-color: #BFDC7A;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#BFDC7A), to(#8EBF45));
-  background-image: -webkit-linear-gradient(top, #BFDC7A, #8EBF45);
-  background-image:    -moz-linear-gradient(top, #BFDC7A, #8EBF45);
-  background-image:     -ms-linear-gradient(top, #BFDC7A, #8EBF45);
-  background-image:      -o-linear-gradient(top, #BFDC7A, #8EBF45);
+  background-color: rgba(147,206,222,1);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(147,206,222,1)), to(rgba(73,165,191,1)));
+  background-image: -webkit-linear-gradient(top, rgba(147,206,222,1), rgba(73,165,191,1));
+  background-image:    -moz-linear-gradient(top, rgba(147,206,222,1), rgba(73,165,191,1));
+  background-image:     -ms-linear-gradient(top, rgba(147,206,222,1), rgba(73,165,191,1));
+  background-image:      -o-linear-gradient(top, rgba(147,206,222,1), rgba(73,165,191,1));
   color: #6a6340;
   -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
   -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
