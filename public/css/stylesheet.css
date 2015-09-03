@@ -127,8 +127,8 @@ label {
   background:#fff;
 }
 .box {
-  width: 29.3333333%;
-  margin: 2%;
+  width: 31.3%;
+  margin: 1%;
   float: left;
 }
 @media (max-width:680px) {
