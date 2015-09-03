@@ -8,9 +8,10 @@
   <script src="/js/javascript.js"></script>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  
+  <script src="/js/jquery.masonry.min.js"></script>
   <link href='https://fonts.googleapis.com/css?family=Signika|Archivo+Narrow|Courgette|Raleway' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -34,5 +35,14 @@
   <div class="container-fluid main-container">
       <%= yield %>
   </div>
+  <script>
+    var $container = $('#masonry-container');
+
+    $container.imagesLoaded( function(){
+      $container.masonry({
+        itemSelector : '.box'
+      });
+    });
+  </script>
 </body>
 </html>

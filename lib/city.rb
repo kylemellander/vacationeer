@@ -1,8 +1,11 @@
 require 'nokogiri'
 require 'open-uri'
+require 'pry'
+
 
 class City < ActiveRecord::Base
   has_many(:airports)
+  has_many(:origins)
   has_and_belongs_to_many(:activities)
   validates(:city_name, :country_name, presence: true)
   before_save(:city_data)
@@ -15,6 +18,10 @@ class City < ActiveRecord::Base
   end
 
 private
+
+  def city_name_only
+    self.city_name.split(",").first
+  end
 
   def daily_average_cost_calc
     @doc.css('.innerWidth').children.each do |p|

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150902172148) do
+ActiveRecord::Schema.define(version: 20150903172711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 20150902172148) do
     t.float    "three_star_cost",     default: 0.0
     t.float    "four_star_cost",      default: 0.0
     t.float    "five_star_cost",      default: 0.0
+    t.string   "img",                 default: "http://4vector.com/i/free-vector-rgesthuizen-city-skyline-clip-art_111543_Rgesthuizen_City_Skyline_clip_art_hight.png"
+  end
+
+  create_table "origins", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "cost"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "city_id"
   end
 
 end

@@ -9,27 +9,54 @@
     </div>
   </div>
   <form action="/vacations" method="get">
+    <% if @input %>
+    <div class="alert alert-danger">
+      <% if @budget == 0 %><p>Budget is required</p><% end %>
+      <% if @airport_code == "" %><p>Airport Code is required</p><% end %>
+      <% if @city_name == "" %><p>Flying out of is required</p><% end %>
+      <% if @vacation_length == 0 %><p>Vacation Length is required</p><% end %>
+      <% if @activity_ids == nil %><p>At least one activity is required</p><% end %>
+    </div>
+    <% end %>
     <div class="row">
       <div class="col-sm-6">
         <div class="form-group">
-          <label for="city_name">Your Location</label>
-          <input type="text" class="form-control" name="city_name" placeholder="ex. Portland, OR">
+          <label for="city_name">Flying out of:</label>
+          <input type="text" class="form-control" name="city_name" placeholder="ex. Portland, OR"<% if @city_name %> value="<%= @city_name %>"<% end %>>
+        </div>
+        <div class="form-group">
+          <label for="airport_code">Airport Code <a href type="text" data-toggle="modal" data-target="#myModal3">(Find my airport code)</a></label>
+          <input type="text" name="airport_code" class="form-control" placeholder="ex. PDX"<% if @airport_code %> value="<%= @airport_code %>"<% end %>>
         </div>
         <div class="form-group">
           <label for="vacation_length">How long do you want to stay?</label>
           <div class="input-group">
-            <input type="text" class="form-control" name="vacation_length" placeholder="10">
+            <input type="text" class="form-control" name="vacation_length" placeholder="10"<% if @vacation_length != nil && @vacation_length > 0 %> value="<%=@vacation_length %>"<% end %>>
             <div class="input-group-addon">days</div>
           </div>
         </div>
         <label for="budget">Budget</label>
         <div class="input-group">
           <div class="input-group-addon">$</div>
-          <input type="number" class="form-control" min="0" name="budget" placeholder="2,500.00">
+          <input type="number" class="form-control" min="0" name="budget" placeholder="2,500.00"<% if @budget != nil && @budget > 0.0 %> value="<%=@budget.to_i %>"<% end %>>
         </div>
       </div>
-      <div class="col-sm-6 search-box">
-        <button class="btn" name="submit">FIND VACATION</button>
+      <div class="col-sm-6">
+        <div class="container-fluid">
+          <div class="row">
+            <% Activity.all.each do |activity| %>
+            <div class="checkbox col-sm-4">
+              <label>
+                <input type="checkbox" value="<%= activity.id %>" name="activity_ids[]"<% if @activity_ids != nil && @activity_ids.include?("activity.id")%> checked<%end%>>
+                <%= activity.name %>
+              </label>
+            </div>
+            <% end %>
+          </div>
+          <div class="search-box">
+            <button class="btn" name="submit">FIND VACATION</button>
+          </div>
+        </div>
       </div>
     </form>
   </div>
@@ -40,7 +67,8 @@
 
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h2>Coming soon!</h2>
+          <!-- <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Login</h4>
         </div>
         <div class="modal-body">
@@ -51,12 +79,26 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-info" name="submit">Submit</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-info" name="submit">Submit</button> -->
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- MODAL FOR AIRPORT CODE -->
+  <div class="modal fade" id="myModal3" role="dialog">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <iframe id="ig_iframe" style="background-color: #FFF" src="http://airportcod.es/" width="100%" height="500px" frameborder="0"></iframe>
+          <p>Powered by http://airportcod.es/</p>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+</div>
+</div>
 
 
   <div class="modal fade" id="myModal2" role="dialog">
@@ -64,9 +106,10 @@
 
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">New user register</h4>
-        </div>
+          <h2>Coming soon!</h2>
+          <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+          <!-- <h4 class="modal-title">Coming soon!</h4> -->
+        <!-- </div>
         <div class="modal-body">
           <form class="form-group" method="post">
             First name <br><input type="text" name="first_name"><br>
@@ -77,10 +120,10 @@
             <br>
             Password<br><input type="text" name="password"><br>
           </form>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-info" name="submit">Submit</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div> -->
+        <!-- <div class="modal-footer">
+          <button type="submit" class="btn btn-info" name="submit">Submit</button> -->
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>

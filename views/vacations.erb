@@ -1,7 +1,39 @@
-<div class="container">
-  <ul class="list-group">
-  <% @cities.each do |city| %>
-    <li class="list-group-item"><%= city.city_name %>, <%= city.country_name %> - $<%= '%.2f' % city.daily_average_cost %></li>
+<div class="container main-content">
+  <div class="masonry" id="masonry-container">
+  <% if !@cities.any? %>
+    <h2>Sorry! We were unable to find any vacations within your budget.</h2>
+  <% else %>
+    <% i=0 %>
+    <% @cities.each do |city| %>
+      <div id="masonry-container">
+        <% city_name = city.city_name.split(" ").first %>
+        <% city_name = city_name.split(",").first if city_name.include?(",") %>
+        <div class="box masonry-brick">
+          <a href type="text" data-toggle="modal" data-target="#modal<%= city_name %>">
+          <% if i==0 %><div class="side-corner-tag"><% end %>
+          <img src="<%=city.img %>" class="img-responsive">
+          <% if i==0 %><div class="ribbon-wrapper-blue"><div class="ribbon-blue">Best Option</div></div><% end %>
+          <% if i==0 %></div><% end %>
+          <% i+=1 %>
+          <%= city.city_name %>, <%= city.country_name %></a>
+          <br>Daily Average Cost: $<%= '%.2f' % city.daily_average_cost %>
+          <br>Roundtrip flight cost: $<%= city.origins.first.cost * 2%>
+        </div>
+        <div class="modal fade" id="modal<%= city_name %>" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-header">
+              <h2><%= city.city_name %></h2>
+              <div class="modal-content">
+                <h3>Estimated daily transportation cost: $<%= city.transportation_cost %></h3>
+                <h3>Estimated daily food cost: $<%= city.food_cost %></h3>
+                <h3>Estimated three-star hotel cost: $<%= city.three_star_cost %></h3>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   <% end %>
-  </ul>
+  </div>
 </div>
