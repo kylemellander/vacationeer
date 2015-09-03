@@ -4,7 +4,7 @@
     <h2>Sorry! We were unable to find any vacations within your budget.</h2>
     <% else %>
       <% @cities.each do |city| %>
-      <div class="box masonry-brick"><img src="<%=city.img %>" class="img-responsive"><a href type="text" data-toggle="modal" data-target="#modal<%= city.city_name %>"><%= city.city_name %>, <%= city.country_name %></a><br>Daily Average Cost: $<%= '%.2f' % city.daily_average_cost %></div>
+      <div class="box masonry-brick"><img src="<%=city.img %>" class="img-responsive"><a href type="text" data-toggle="modal" data-target="#modal<%= city.city_name.gsub(/,/, "").first %>"><%= city.city_name %>, <%= city.country_name %></a><br>Daily Average Cost: $<%= '%.2f' % city.daily_average_cost %></div>
     <% end %>
   <% end %>
   </div>
@@ -12,7 +12,7 @@
 
 
 <% @cities.each do |city| %>
-<div class="modal fade" id="modal<%= city.city_name %>" role="dialog">
+<div class="modal fade" id="modal<%= city.city_name.gsub(/,/, "").first %>" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
     <h2><%= city.city_name %></h2>
