@@ -31,6 +31,7 @@ post '/admins/new_city' do
   airport_code = params['airport_code'].upcase
   city = City.create({city_name: city_name, country_name: country_name})
   Airport.create({airport_code: airport_code, city_id: city.id})
+  city.fetch
   redirect '/admins'
 end
 

@@ -2,34 +2,36 @@
   <div class="masonry" id="masonry-container">
   <% if !@cities.any? %>
     <h2>Sorry! We were unable to find any vacations within your budget.</h2>
-    <% else %>
-      <% i=0 %>
-      <% @cities.each do |city| %>
+  <% else %>
+    <% i=0 %>
+    <% @cities.each do |city| %>
+      <% city_name = city.city_name.split(" ").first %>
+      <% city_name = city_name.split(",").first if city_name.include?(",") %>
       <div class="box masonry-brick">
         <% if i==0 %><div class="side-corner-tag"><% end %>
-          <img src="<%=city.img %>" class="img-responsive">
-          <% if i==0 %><div class="ribbon-wrapper-blue"><div class="ribbon-blue">Best Option</div></div><% end %>
+        <img src="<%=city.img %>" class="img-responsive">
+        <% if i==0 %><div class="ribbon-wrapper-blue"><div class="ribbon-blue">Best Option</div></div><% end %>
         <% if i==0 %></div><% end %>
-        <a href type="text" data-toggle="modal" data-target="#modal<%= city.city_name.split(",").first.gsub(/ /, "_") %>"><%= city.city_name %>, <%= city.country_name %></a><br>
-        Daily Average Cost: $<%= '%.2f' % city.daily_average_cost %>
+        <% i+=1 %>
+        <a href type="text" data-toggle="modal" data-target="#modal<%= city_name %>"><%= city.city_name %>, <%= city.country_name %></a>
+        <br>Daily Average Cost: $<%= '%.2f' % city.daily_average_cost %>
+        <br>Roundtrip flight cost: $<%= city.origins.first.cost * 2%>
       </div>
-      <% i+=1 %>
-      <% end %>
+      <div class="modal fade" id="modal<%= city_name %>" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-header">
+            <h2><%= city.city_name %></h2>
+            <div class="modal-content">
+              <h3>Estimated daily transportation cost: $<%= city.transportation_cost %></h3>
+              <h3>Estimated daily food cost: $<%= city.food_cost %></h3>
+              <h3>Estimated daily hotel cost: $<%= city.four_star_cost %></h3>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
   <% end %>
   </div>
 </div>
-
-
-<% @cities.each do |city| %>
-<div class="modal fade" id="modal<%= city.city_name.split(",").first.gsub(/ /, "_") %>" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-    <h2><%= city.city_name %></h2>
-      <div class="modal-header">
-
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<% end %>

@@ -14,20 +14,22 @@ class Input < ActiveRecord::Base
     vacations = []
     City.all().order('daily_average_cost asc').each do |city|
       count = 0
-      if @activity_ids != nil
-        @activity_ids.each do |activity_id|
-          activity = city.activities.where(id: activity_id.to_i)
+      if activity_ids != nil
+        activity_ids.each do |activity_id|
+          activity = cost.activities.where(id: activity_id.to_i)
           if activity != []
-            count += 1
+            count+=1
           end
         end
       end
       city.city_data
-      cost = (city.daily_average_cost * vacation_length)
+      fetch_flight_cost
+      cost = (city.daily_average_cost * vacation_length) + (city.origins.first.cost * 2)
       if cost <= budget
         vacations.push({count: count, city: city})
       end
     end
+
     vacations.sort_by! { |hsh| hsh[:count] }
     result = []
     vacations.each { |vacation| result.push(vacation.values.last) }
