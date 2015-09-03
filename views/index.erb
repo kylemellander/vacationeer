@@ -12,7 +12,7 @@
     <% if @input %>
     <div class="alert alert-danger">
       <% if @budget == 0 %><p>Budget is required</p><% end %>
-      <% if @airport_code = "" %><p>Airport Code is required</p><% end %>
+      <% if @airport_code == "" %><p>Airport Code is required</p><% end %>
       <% if @city_name == "" %><p>Flying out of is required</p><% end %>
       <% if @vacation_length == 0 %><p>Vacation Length is required</p><% end %>
       <% if @activity_ids == nil %><p>At least one activity is required</p><% end %>
@@ -38,7 +38,7 @@
         <label for="budget">Budget</label>
         <div class="input-group">
           <div class="input-group-addon">$</div>
-          <input type="number" class="form-control" min="0" name="budget" placeholder="2,500.00"<% if @budget != nil && @budget > 0.0 %> value="<%=@budget %>"<% end %>>
+          <input type="number" class="form-control" min="0" name="budget" placeholder="2,500.00"<% if @budget != nil && @budget > 0.0 %> value="<%=@budget.to_i %>"<% end %>>
         </div>
       </div>
       <div class="col-sm-6">
