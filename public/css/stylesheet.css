@@ -120,3 +120,17 @@ label {
 .admin-page {
   background:#fff;
 }
+
+.main-content {
+  margin-top:20px;
+  margin-bottom: 20px;
+  background:#fff;
+}
+.box {
+  width: 29.3333333%;
+  margin: 2%;
+  float: left;
+}
+@media (max-width:680px) {
+  .box { width:96%;}
+}

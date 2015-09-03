@@ -15,6 +15,10 @@
           <label for="airport_code">Airport Code</label>
           <input type="text" class="form-control" name="airport_code" placeholder="ex. PDX">
         </div>
+        <div class="form-group">
+          <label for="img">Image:</label>
+          <input type="text" class="form-control" name="img" placeholder="http://www.google.com/img.jpg">
+        </div>
         <button type="submit" class="btn">Add</button>
       </form>
     </div>
@@ -47,6 +51,10 @@
                 <div class="form-group">
                   <label for="airport_code">Airport Code</label>
                   <input type="text" class="form-control" name="airport_code" placeholder="ex. PDX" value="<%= city.airports.first.airport_code %>">
+                </div>
+                <div class="form-group">
+                  <label for="img">Image:</label>
+                  <input type="text" class="form-control" name="img" placeholder="http://www.google.com/img.jpg" value="<%= city.img %>">
                 </div>
                 <% Activity.all.each do |activity| %>
                 <div class="checkbox col-sm-4">

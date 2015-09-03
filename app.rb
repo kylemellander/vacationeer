@@ -46,10 +46,11 @@ patch '/cities/:id' do
   country = params['country_name']
   airport_code = params['airport_code'].upcase
   activity_ids = params['activity_ids']
+  img = params['img']
   activity_inputs = []
-  activity_ids.each {|id| activity_inputs.push(id.to_i)}
+  activity_ids.each {|id| activity_inputs.push(id.to_i)} if activity_ids != nil
   city = City.find(id)
-  city.update({city_name: city_name, country_name: country, activity_ids: activity_inputs})
+  city.update({city_name: city_name, country_name: country, activity_ids: activity_inputs, img: img})
   city.airports.first.update({airport_code: airport_code})
   redirect '/admins'
 end
@@ -60,9 +61,4 @@ patch '/activities/:id' do
   group = params["group"]
   Activity.find(id).update({name: name, group: group})
   redirect '/admins'
-end
-
-get '/test/:name' do
-  @data = params['name']
-  erb(:test)
 end
