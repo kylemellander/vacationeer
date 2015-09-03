@@ -24,12 +24,8 @@ class Input
         end
       end
       fetch_flight_cost
-<<<<<<< HEAD
       city.city_data
-      cost = (city.daily_average_cost * vacation_length)
-=======
-      cost = (city.daily_average_cost * vacation_length) + city.origins.first.cost
->>>>>>> f1d81b4e02109dc06e8353978235b2fcc10e6aac
+      cost = (city.daily_average_cost * vacation_length) + (city.origins.first.cost * 2)
       if cost <= budget
         vacations.push({count: count, city: city})
       end
