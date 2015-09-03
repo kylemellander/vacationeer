@@ -13,7 +13,8 @@ get '/vacations' do
   city_name = params['city_name']
   airport_code = params["airport_code"]
   vacation_length = params['vacation_length']
-  input = Input.new({budget: budget, city_name: city_name, vacation_length: vacation_length, airport_code: airport_code})
+  activity_ids = params["activity_ids"]
+  input = Input.new({budget: budget, city_name: city_name, vacation_length: vacation_length, airport_code: airport_code, activity_ids: activity_ids})
   @cities = input.list_vacations
   erb(:vacations)
 end

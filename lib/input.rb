@@ -1,25 +1,39 @@
+require 'pry'
+
 class Input
 
-  attr_accessor :budget, :city_name, :vacation_length, :airport_code
+  attr_accessor :budget, :city_name, :vacation_length, :airport_code, :activity_ids
 
   def initialize(attributes)
     @budget = attributes[:budget].to_f
     @city_name = attributes[:city_name]
     @airport_code = attributes[:airport_code]
     @vacation_length = attributes[:vacation_length].to_i
+    @activity_ids = attributes[:activity_ids]
   end
 
   def list_vacations
     vacations = []
     City.all().order('daily_average_cost asc').each do |city|
+      count = 0
+      if @activity_ids != nil
+        @activity_ids.each do |activity_id|
+          activity = city.activities.where(id: activity_id.to_i)
+          if activity != []
+            count += 1
+          end
+        end
+      end
       city.city_data
       cost = (city.daily_average_cost * vacation_length)
-      # + city.origins.first.cost
       if cost <= budget
-        vacations.push(city)
+        vacations.push({count: count, city: city})
       end
     end
-    vacations
+    vacations.sort_by! { |hsh| hsh[:count] }
+    result = []
+    vacations.each { |vacation| result.push(vacation.values.last) }
+    result.reverse
   end
 
   def fetch_flight_cost
