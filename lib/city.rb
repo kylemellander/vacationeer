@@ -17,14 +17,23 @@ class City < ActiveRecord::Base
   end
 
   def flight_cost
-    @doc = Nokogiri::HTML(open("http://www.faredetective.com/farehistory/flights-from-Portland-PDX-to-Philadelphia-PHL.html"))
-    @doc.css('.div7').each do |flight_info|
-      price_test = flight_info.text.split("Average price: ")[1].split("Cheapest months to travel: ")[0].to_i
+    count = 0
+    City.all.each do |city|
+
+      @doc = Nokogiri::HTML(open("http://www.faredetective.com/farehistory/flights-from-#{city_name_only}-#{PDX}-to-#{}-PHL.html"))
+      @doc.css('.div7').each do |flight_info|
+        price_test = flight_info.text.split("Average price: ")[1].split("Cheapest months to travel: ")[0].to_i
+      end
+      count += 1
     end
   end
 
 
 private
+
+  def city_name_only
+    self.city_name.split(",").first
+  end
 
   def daily_average_cost_calc
     @doc.css('.innerWidth').children.each do |p|

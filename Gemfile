@@ -7,6 +7,7 @@ gem 'sinatra-contrib', require: 'sinatra/reloader'
 gem 'sinatra-activerecord'
 gem 'pg'
 gem 'httparty'
+gem 'world_airports', '~> 1.1.3'
 
 group(:test) do
   gem 'rspec'

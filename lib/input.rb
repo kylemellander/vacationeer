@@ -1,10 +1,11 @@
 class Input
 
-  attr_accessor :budget, :city_name, :vacation_length
+  attr_accessor :budget, :city_name, :vacation_length, :airport_code
 
   def initialize(attributes)
     @budget = attributes[:budget].to_f
     @city_name = attributes[:city_name]
+    @airport_code = attributes[:airport_code]
     @vacation_length = attributes[:vacation_length].to_i
   end
 
