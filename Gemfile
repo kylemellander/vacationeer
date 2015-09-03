@@ -8,6 +8,7 @@ gem 'sinatra-activerecord'
 gem 'pg'
 gem 'httparty'
 gem 'world_airports', '~> 1.1.3'
+gem 'lotus-validations'
 
 group(:test) do
   gem 'rspec'

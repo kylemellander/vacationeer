@@ -1,22 +1,24 @@
 require("bundler/setup")
 Bundler.require(:default)
-require 'pry'
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 get '/' do
-  @airports = Airport.all
   erb(:index)
 end
 
 get '/vacations' do
-  budget = params['budget'].to_f
-  city_name = params['city_name']
-  airport_code = params["airport_code"]
-  vacation_length = params['vacation_length']
-  activity_ids = params["activity_ids"]
-  input = Input.new({budget: budget, city_name: city_name, vacation_length: vacation_length, airport_code: airport_code, activity_ids: activity_ids})
-  @cities = input.list_vacations
-  erb(:vacations)
+  @budget = params['budget'].to_f
+  @city_name = params['city_name']
+  @airport_code = params["airport_code"]
+  @vacation_length = params['vacation_length'].to_i
+  @activity_ids = params["activity_ids"]
+  @input = Input.new({budget: @budget, city_name: @city_name, vacation_length: @vacation_length, airport_code: @airport_code, activity_ids: @activity_ids})
+  if @input.valid? && @budget != 0 && @activity_ids != nil
+    @cities = @input.list_vacations
+    erb(:vacations)
+  else
+    erb(:index)
+  end
 end
 
 get '/admins' do
