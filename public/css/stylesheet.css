@@ -84,6 +84,7 @@ body {
 .main-inner-container {
   background:url('/img/logo-screen.png') no-repeat top center;
   min-height:400px;
+  height:100vh;
   margin-top:0;
   padding-bottom: 40px;
 }
@@ -136,7 +137,12 @@ label {
   float:left;
   width:150px;
 }
+.full-width-col {
+  background:rgba(0,0,0,0.8);
+  color:#fff;
+  padding: 20px;
 
+}
 .box:hover{
   border:1px solid #25a8ad;
 }

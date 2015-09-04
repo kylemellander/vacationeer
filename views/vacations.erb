@@ -36,6 +36,12 @@
                 <h3>Estimated daily transportation cost: $<%= '%.2f' % city.transportation_cost %></h3>
                 <h3>Estimated daily food cost: $<%= '%.2f' % city.food_cost %></h3>
                 <h3>Estimated three-star hotel cost: $<%= '%.2f' % city.three_star_cost %></h3>
+                <h3>Activities to enjoy here:</h3>
+                <ul>
+                <% city.activities.each do |activity| %>
+                  <li><%= activity.name %></li>
+                <% end %>
+                </ul>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
               </div>
             </div>
