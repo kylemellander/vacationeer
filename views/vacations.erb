@@ -32,7 +32,7 @@
             <div class="modal-header">
               <h2><%= city.city_name %></h2>
               <div class="modal-content">
-                <h3>Roundtrip flight cost: $<%= '%.2f' % (city.flight_cost * 2)%></h3>
+                <h3>Roundtrip flight cost: $<%= '%.2f' % (city.flight_cost)%></h3>
                 <h3>Estimated daily transportation cost: $<%= '%.2f' % city.transportation_cost %></h3>
                 <h3>Estimated daily food cost: $<%= '%.2f' % city.food_cost %></h3>
                 <h3>Estimated three-star hotel cost: $<%= '%.2f' % city.three_star_cost %></h3>
