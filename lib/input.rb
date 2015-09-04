@@ -67,5 +67,4 @@ class Input
   def city_name_only
     city_name.split(",").first
   end
-
 end

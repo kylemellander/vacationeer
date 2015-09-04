@@ -1,6 +1,5 @@
 require 'nokogiri'
 require 'open-uri'
-require 'pry'
 
 
 class City < ActiveRecord::Base
@@ -17,8 +16,11 @@ class City < ActiveRecord::Base
     end
   end
 
-private
+  def flight_cost
+    origins.first.cost
+  end
 
+private
   def city_name_only
     self.city_name.split(",").first
   end
