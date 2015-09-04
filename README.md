@@ -1,4 +1,4 @@
-# ${1:Project Name}
+# Vacationeer
 By: Ryan Heupler, Kyle Mellander, Josue Valverde, and Justin Scott
 
 ##Description
