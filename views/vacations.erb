@@ -16,7 +16,7 @@
       <div id="masonry-container">
         <% city_name = city.city_name.split(" ").first %>
         <% city_name = city_name.split(",").first if city_name.include?(",") %>
-        <div class="box masonry-brick">
+        <div class="box masonry-brick<% if i==0 %> col2<% end %>">
           <a href type="text" data-toggle="modal" data-target="#modal<%= city_name %>">
           <% if i==0 %><div class="side-corner-tag"><% end %>
           <img src="<%=city.img %>" class="img-responsive">
