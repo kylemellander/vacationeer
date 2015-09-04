@@ -13,7 +13,7 @@ class Input
   def initialize(attributes)
     @budget = attributes[:budget].to_f
     @city_name = attributes[:city_name]
-    @airport_code = attributes[:airport_code]
+    @airport_code = attributes[:airport_code].upcase
     @vacation_length = attributes[:vacation_length].to_i
     @activity_ids = attributes[:activity_ids]
   end
