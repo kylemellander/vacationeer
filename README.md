@@ -8,23 +8,24 @@ that budget. Also allows users to enter activities they'd like to do.
 
 ## Installation
 
-$ git clone https://github.com/kylemellander/vacationeer.git into your computer
-$ bundle to install program dependencies
-$ postgres to start a postgres server
-Open new terminal tab
-$ db:create to create a database
-$ db:migrate to add appropriate table information
-open new tab and run $ ruby app.rb in the project directory to run sinatra app
-go to localhost:4567 in your browser to open webapp
+
+* _`$ git clone https://github.com/kylemellander/vacationeer.git` into your computer_
+* _`$ bundle` to install program dependencies_
+* _`$ postgres` to start a postgres server_
+* _Open new terminal tab_
+* _`$ db:create` to create a database_
+* _`$ db:migrate` to add appropriate table information_
+* _open new tab and run `$ ruby app.rb` in the project directory to run sinatra app_
+* _go to `localhost:4567` in your browser to open webapp_
 
 
 ##Technologies Used
 
-Written in Ruby
-Site runs on Sinatra
-Error checking with RSpec and Capybara
-Database management with postgresql
-Object Modeling with ActiveRecord
+* _Written in Ruby_
+* _Site runs on Sinatra_
+* _Error checking with RSpec and Capybara_
+* _Database management with postgresql_
+* _Object Modeling with ActiveRecord_
 
 ## Contributing
 
