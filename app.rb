@@ -1,5 +1,4 @@
 require("bundler/setup")
-require './config/environments' #database configuration
 Bundler.require(:default)
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
