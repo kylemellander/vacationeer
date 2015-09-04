@@ -60,7 +60,7 @@
                   <div class="row">
                     <% Activity.all.each do |activity| %>
                     <label class="ko-checkbox">
-                      <input type="checkbox" value="<%= activity.id %>" name="activity_ids[]"<% if @activity_ids != nil && @activity_ids.include?("activity.id")%> checked<%end%>> <%= activity.name %>
+                      <input type="checkbox" value="<%= activity.id %>" name="activity_ids[]"<% if activity == city.activities.where(id: activity.id).first %> checked<%end%>> <%= activity.name %>
                     </label>
                     <% end %>
                   </div>
