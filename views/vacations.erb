@@ -1,7 +1,15 @@
 <div class="container main-content">
   <div class="masonry" id="masonry-container">
   <% if !@cities.any? %>
-    <h2>Sorry! We were unable to find any vacations within your budget.</h2>
+    <div class="full-width-col">
+      <h2>Sorry! We were unable to find any vacations within your budget. Here are some saving tips:</h2>
+      <ul>
+        <li>Make a monthly budget with at least 10% of it allocated for savings.</li>
+        <li>Choose some habits that you spend on money on that aren't necessary and cut them back</li>
+        <li>Track how much you spend and what you spend it on. You might notice places where money is going out quickly.</li>
+        <li>Go somewhere local for vacation. You can save a lot of money by discovering things that are already in your backyard</li>
+      </ul>
+    </div>
   <% else %>
     <% i=0 %>
     <% @cities.each do |city| %>
