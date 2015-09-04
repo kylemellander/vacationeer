@@ -56,14 +56,15 @@
                   <label for="img">Image:</label>
                   <input type="text" class="form-control" name="img" placeholder="http://www.google.com/img.jpg" value="<%= city.img %>">
                 </div>
-                <% Activity.all.each do |activity| %>
-                <div class="checkbox col-sm-4">
-                  <label>
-                    <input type="checkbox" value="<%= activity.id %>" name="activity_ids[]"<% if city.activities.include?(activity) %> checked<% end %>>
-                    <%= activity.name %>
-                  </label>
+                <div class="container-fluid">
+                  <div class="row">
+                    <% Activity.all.each do |activity| %>
+                    <label class="ko-checkbox">
+                      <input type="checkbox" value="<%= activity.id %>" name="activity_ids[]"<% if @activity_ids != nil && @activity_ids.include?("activity.id")%> checked<%end%>> <%= activity.name %>
+                    </label>
+                    <% end %>
+                  </div>
                 </div>
-                <% end %>
                 <button type="submit" class="btn">Update</button>
               </form>
             </div>
